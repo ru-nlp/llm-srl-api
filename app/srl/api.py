@@ -1,13 +1,18 @@
 from fastapi import APIRouter, Depends
 from typing import List
+import logging
 
 from .models import SRLRequest, SRLResponse
 from .analyzer import SRLAnalyzer
+
+# Get module logger
+logger = logging.getLogger("app.srl.api")
 
 router = APIRouter(prefix="/srl", tags=["Semantic Role Labeling"])
 
 async def get_analyzer():
     """Dependency to get SRL analyzer instance."""
+    logger.debug("Creating new SRLAnalyzer instance")
     return SRLAnalyzer()
 
 @router.post("/analyze", response_model=SRLResponse)
@@ -31,5 +36,7 @@ async def analyze_text(
     Returns:
         SRLResponse containing analysis results
     """
+    logger.info(f"Analyzing text: {request.text}")
     result = await analyzer.analyze(request.text)
+    logger.info(f"Analysis completed with {len(result.get('roles', []))} roles found")
     return SRLResponse(**result) 

@@ -2,10 +2,13 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import time
 import multiprocessing
+import logging
 
 from .config import settings
-from .logging import logger
 from .srl import router as srl_router
+
+# Get module logger
+logger = logging.getLogger("app.main")
 
 app = FastAPI(
     title=settings.API_TITLE,
