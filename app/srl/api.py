@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from typing import List
 import logging
+from functools import lru_cache
 
 from .models import SRLRequest, SRLResponse
 from .analyzer import SRLAnalyzer
@@ -10,9 +11,14 @@ logger = logging.getLogger("app.srl.api")
 
 router = APIRouter(prefix="/srl", tags=["Semantic Role Labeling"])
 
-async def get_analyzer():
-    """Dependency to get SRL analyzer instance."""
-    logger.debug("Creating new SRLAnalyzer instance")
+@lru_cache(maxsize=None)
+def get_analyzer():
+    """Dependency to get SRL analyzer instance.
+    
+    This function is cached to reuse the same analyzer (and spaCy model)
+    across requests within the same worker process.
+    """
+    logger.debug("Creating or retrieving cached SRLAnalyzer instance")
     return SRLAnalyzer()
 
 @router.post("/analyze", response_model=SRLResponse)

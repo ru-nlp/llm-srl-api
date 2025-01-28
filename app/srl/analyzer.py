@@ -1,7 +1,7 @@
 import json
 import spacy
 import logging
-from openai import OpenAI
+from openai import AsyncOpenAI
 from typing import Dict, List, Optional, Tuple
 from functools import lru_cache
 from pathlib import Path
@@ -26,7 +26,7 @@ class SRLAnalyzer:
         self.examples = self._load_json(settings.EXAMPLES_FILE)
         self.inv_form_mapping = self._create_inverse_form_mapping()
         self.inv_examples_mapping = self._create_inverse_examples_mapping()
-        self.llm_client = OpenAI(
+        self.llm_client = AsyncOpenAI(
             base_url=settings.OPENAI_API_BASE_URL,
             api_key=settings.OPENAI_API_KEY
         )
@@ -185,10 +185,10 @@ Remember:
 
         try:
             logger.debug("Making LLM API call")
-            response = self.llm_client.chat.completions.create(
+            response = await self.llm_client.chat.completions.create(
                 model=settings.OPENAI_MODEL_NAME,
                 messages=prompt,
-                max_completion_tokens=1024,
+                max_tokens=1024,
                 temperature=0.0,
                 extra_body={
                     "guided_json": SemanticRoleMarkup.model_json_schema()
