@@ -1,0 +1,52 @@
+{
+  "пугать": {
+    "semantic_roles": {
+      "experiencer": "Entity experiencing fear.",
+      "causator": "Entity or event that triggers fear.",
+      "instrument": "Means or medium used by the causator to induce fear.",
+      "deliberative": "Entity about whose well-being the experiencer is afraid (marked by 'за')."
+    }
+  },
+  "страшить": {
+    "semantic_roles": {
+      "experiencer": "Entity experiencing fear or dread.",
+      "causator": "Entity or event that instills fear or dread.",
+      "instrument": "Means or medium used by the causator to induce fear (when present)."
+    }
+  },
+  "ужасать": {
+    "semantic_roles": {
+      "experiencer": "Entity experiencing horror or extreme fear.",
+      "causator": "Entity or event causing horror or extreme fear.",
+      "instrument": "Means or medium intensifying the horror (e.g., 'своими цифрами').",
+      "cause": "Underlying reason or factor causing horror, often introduced by a preposition like 'от'."
+    }
+  },
+  "бояться": {
+    "semantic_roles": {
+      "experiencer": "Entity feeling fear.",
+      "causator": "Entity or event that is feared.",
+      "deliberative": "Entity for whose well-being or outcome the experiencer fears (marked by 'за')."
+    }
+  },
+  "опасаться": {
+    "semantic_roles": {
+      "experiencer": "Entity feeling concern or fear.",
+      "causator": "Entity or event causing concern or fear.",
+      "deliberative": "Entity for whose well-being or situation the experiencer fears (marked by 'за')."
+    }
+  },
+  "любить": {
+    "semantic_roles": {
+      "experiencer": "Entity experiencing love or liking.",
+      "object": "Entity or concept that is loved or liked."
+    }
+  },
+  "нравиться": {
+    "semantic_roles": {
+      "experiencer": "Entity to whom something is pleasing.",
+      "object": "Entity or concept that is found pleasing or liked.",
+      "cause": "Reason or factor contributing to the pleasantness (often introduced by 'благодаря', 'из-за', 'от')."
+    }
+  }
+}
