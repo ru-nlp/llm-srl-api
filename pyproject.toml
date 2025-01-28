@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "llm-srl-api"
 version = "0.1.0"
-description = "FastAPI service with Rich logging"
-authors = ["Your Name <your.email@example.com>"]
+description = "Semantic Role Labeling API for Russian language using LLM and spaCy"
+authors = ["Daniil Larionov <rexhaif.io@gmail.com>"]
 packages = [{include = "app"}]
 package-mode = false
 
