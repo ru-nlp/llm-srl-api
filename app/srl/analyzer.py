@@ -21,9 +21,9 @@ class SRLAnalyzer:
         """Initialize the analyzer with spaCy model and load mappings."""
         logger.info("Initializing SRL Analyzer")
         self.nlp = spacy.load(settings.SPACY_MODEL)
-        self.role_mapping = self._load_json(settings.get_role_mapping_path())
-        self.form_mapping = self._load_json(settings.get_form_mapping_path())
-        self.examples = self._load_json(settings.get_examples_path())
+        self.role_mapping = self._load_json(settings.ROLE_MAPPING_FILE)
+        self.form_mapping = self._load_json(settings.FORM_MAPPING_FILE)
+        self.examples = self._load_json(settings.EXAMPLES_FILE)
         self.inv_form_mapping = self._create_inverse_form_mapping()
         self.inv_examples_mapping = self._create_inverse_examples_mapping()
         self.llm_client = OpenAI(
